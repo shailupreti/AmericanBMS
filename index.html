@@ -44,22 +44,28 @@
         <div class="hero-bg">
             <div class="hero-grid"></div>
             <div class="hero-glow"></div>
+            <div class="hero-particles" id="heroParticles"></div>
+            <div class="hero-orbit">
+                <div class="orbit-ring orbit-ring-1"></div>
+                <div class="orbit-ring orbit-ring-2"></div>
+                <div class="orbit-ring orbit-ring-3"></div>
+            </div>
         </div>
         <div class="container hero-content">
-            <div class="hero-badge">
+            <div class="hero-badge animate-fade-in">
                 <span class="badge-dot"></span>
                 100% American Innovation
             </div>
             <h1 class="hero-title">
-                Powering America's<br>
-                <span class="gradient-text">Energy Future</span>
+                <span class="typewriter" id="typewriter"></span><br>
+                <span class="gradient-text animate-slide-up">Energy Future</span>
             </h1>
-            <p class="hero-subtitle">
+            <p class="hero-subtitle animate-fade-in-delay">
                 Next-generation Battery Management Systems built on American intellectual property,
                 manufactured in America, secured on American cloud infrastructure, and domiciled in the United States.
             </p>
-            <div class="hero-actions">
-                <a href="#contact" class="btn btn-primary">Get Started</a>
+            <div class="hero-actions animate-fade-in-delay-2">
+                <a href="#contact" class="btn btn-primary btn-glow">Get Started</a>
                 <a href="#digital-dna" class="btn btn-secondary">
                     <span class="btn-play">&#9654;</span>
                     Explore Digital DNA
@@ -67,19 +73,25 @@
             </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-value">2 GWh</span>
+                    <span class="stat-value" data-count="2" data-suffix=" GWh">0</span>
                     <span class="stat-label">Committed Capacity</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-value">100%</span>
+                    <span class="stat-value" data-count="100" data-suffix="%">0</span>
                     <span class="stat-label">American IP</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-value">5+</span>
+                    <span class="stat-value" data-count="5" data-suffix="+">0</span>
                     <span class="stat-label">Global Certifications</span>
                 </div>
+            </div>
+            <div class="hero-floating-data">
+                <span class="hero-data-tag hd-1">BMS v4.2</span>
+                <span class="hero-data-tag hd-2">AI Online</span>
+                <span class="hero-data-tag hd-3">USA Cloud</span>
+                <span class="hero-data-tag hd-4">Encrypted</span>
             </div>
         </div>
     </section>
@@ -361,6 +373,10 @@
                     </p>
                 </div>
                 <form class="contact-form" id="contactForm">
+                    <input type="hidden" name="_subject" value="New Contact from American BMS Website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name</label>

@@ -1976,7 +1976,248 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
-   ANIMATIONS
+   HERO ANIMATIONS & PARTICLES
+   ============================================ */
+
+/* Floating Particles */
+.hero-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    animation: particleFloat linear infinite;
+    box-shadow: 0 0 6px var(--accent-blue);
+}
+
+@keyframes particleFloat {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) translateX(30px); opacity: 0; }
+}
+
+/* Orbit Rings */
+.hero-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    pointer-events: none;
+}
+
+.orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    animation: orbitSpin linear infinite;
+}
+
+.orbit-ring-1 {
+    inset: 0;
+    border-top-color: rgba(59, 130, 246, 0.25);
+    border-right-color: rgba(59, 130, 246, 0.08);
+    animation-duration: 25s;
+}
+
+.orbit-ring-2 {
+    inset: 60px;
+    border-bottom-color: rgba(139, 92, 246, 0.2);
+    border-left-color: rgba(139, 92, 246, 0.06);
+    animation-duration: 18s;
+    animation-direction: reverse;
+}
+
+.orbit-ring-3 {
+    inset: 120px;
+    border-top-color: rgba(239, 68, 68, 0.15);
+    border-right-color: rgba(239, 68, 68, 0.05);
+    animation-duration: 30s;
+}
+
+@keyframes orbitSpin {
+    to { transform: rotate(360deg); }
+}
+
+[data-theme="light"] .orbit-ring-1 { border-top-color: rgba(37, 99, 235, 0.15); border-right-color: rgba(37, 99, 235, 0.05); }
+[data-theme="light"] .orbit-ring-2 { border-bottom-color: rgba(124, 58, 237, 0.12); border-left-color: rgba(124, 58, 237, 0.04); }
+[data-theme="light"] .orbit-ring-3 { border-top-color: rgba(220, 38, 38, 0.1); border-right-color: rgba(220, 38, 38, 0.03); }
+[data-theme="light"] .particle { box-shadow: 0 0 6px rgba(37, 99, 235, 0.6); }
+
+/* Typewriter */
+.typewriter {
+    display: inline;
+    border-right: 3px solid var(--accent-blue);
+    animation: blink 0.8s step-end infinite;
+}
+
+.typewriter-done {
+    border-right-color: transparent;
+    animation: blink 0.8s step-end infinite 2s;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* Hero entrance animations */
+.animate-fade-in {
+    animation: heroFadeIn 0.8s ease 0.3s both;
+}
+
+.animate-slide-up {
+    animation: heroSlideUp 0.8s ease 1.8s both;
+}
+
+.animate-fade-in-delay {
+    animation: heroFadeIn 0.8s ease 2.4s both;
+}
+
+.animate-fade-in-delay-2 {
+    animation: heroFadeIn 0.8s ease 2.8s both;
+}
+
+@keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroSlideUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Glowing CTA button */
+.btn-glow {
+    position: relative;
+    overflow: visible;
+}
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-radius: inherit;
+    opacity: 0;
+    filter: blur(12px);
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.btn-glow:hover::before {
+    opacity: 0.6;
+}
+
+/* Floating Hero Data Tags */
+.hero-floating-data {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hero-data-tag {
+    position: absolute;
+    padding: 5px 12px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--accent-blue-light);
+    backdrop-filter: blur(5px);
+    animation: floatTag 5s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+.hd-1 { top: 15%; left: 5%; animation-delay: 0s; }
+.hd-2 { top: 30%; right: 3%; animation-delay: 1.2s; }
+.hd-3 { bottom: 25%; left: 8%; animation-delay: 2.4s; }
+.hd-4 { bottom: 15%; right: 6%; animation-delay: 3.6s; }
+
+@keyframes floatTag {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-12px) rotate(1deg); }
+    66% { transform: translateY(6px) rotate(-1deg); }
+}
+
+/* Animated gradient border on card hover */
+.pillar-card::before,
+.security-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end), var(--accent-red), var(--gradient-start));
+    background-size: 300% 300%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    animation: gradientShift 4s ease infinite;
+}
+
+.pillar-card,
+.security-card {
+    position: relative;
+    z-index: 0;
+}
+
+.pillar-card:hover::before,
+.security-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Scanline effect for hero */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(59, 130, 246, 0.015) 2px,
+        rgba(59, 130, 246, 0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+[data-theme="light"] .hero::after {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(37, 99, 235, 0.01) 2px,
+        rgba(37, 99, 235, 0.01) 4px
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   GENERAL ANIMATIONS
    ============================================ */
 .animate-in {
     animation: fadeInUp 0.6s ease forwards;
@@ -2005,6 +2246,8 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
     .mobile-toggle { display: flex; align-items: center; justify-content: center; }
+    .hero-orbit { width: 400px; height: 400px; }
+    .hero-floating-data { display: none; }
 
     .nav-links {
         position: fixed;
