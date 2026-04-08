@@ -88,7 +88,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     }, observerOptions);
 
     document.querySelectorAll(
-        '.pillar-card, .security-card, .impact-card, .cert-preview-card, .cert-detail, .feature-item, .split-visual'
+        '.pillar-card, .security-card, .impact-card, .cert-preview-card, .cert-detail, .feature-item, .split-visual, .feoc-card, .scale-card, .cell-card, .chem-card, .sim-card, .workflow-step'
     ).forEach(function(el) {
         observer.observe(el);
     });
